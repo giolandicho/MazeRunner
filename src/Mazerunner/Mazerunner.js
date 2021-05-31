@@ -123,7 +123,7 @@ const Mazerunner = ()=>{
         setStart(false)
         setEnd(false)
     }
-    const getStart = (grid)=>{
+    const getStart = ()=>{
         let startCell = grid[start_row][start_col]
         grid.forEach(row =>{
            for(let i = 0; i < row.length; i++){ 
@@ -135,7 +135,7 @@ const Mazerunner = ()=>{
         })
         return startCell
     }
-    const getEnd = (grid)=>{
+    const getEnd = ()=>{
         let endCell = grid[start_row][start_col]
         grid.forEach(row =>{
            for(let i = 0; i < row.length; i++){ 
@@ -147,7 +147,7 @@ const Mazerunner = ()=>{
         })
         return endCell
     }
-    const handleBFS = (grid)=>{
+    const handleBFS = ()=>{
         const startCell = getStart(grid)
         const endCell = getEnd(grid)
         minorGridReset(grid)
