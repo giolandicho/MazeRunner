@@ -154,7 +154,7 @@ const Mazerunner = ()=>{
         const visitedCells = breadthFirstSearch(grid, startCell, endCell)
         const path = shortestPath(endCell)
         renderBFS(visitedCells, path)
-        visualizing(true)
+        isVisualizing(true)
         hasBeenReset(false)
     }
     const renderBFS = (visitedCells, path)=>{
