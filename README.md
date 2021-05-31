@@ -1,5 +1,4 @@
-Renders a grid with start and end cells. User can move start/end cells, create walls to make a maze and then a bfs algorithm will find the shortest path between start and end cells. 
-
+A pathfinding app that finds the shortest path between two cells on a grid
 
 
 
