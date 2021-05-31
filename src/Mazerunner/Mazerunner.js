@@ -175,7 +175,7 @@ const Mazerunner = ()=>{
     const renderShortestPath = (path) =>{
         if(path[0] !== getStart()){
             alert("no path available")
-            visualizing(false)
+            isVisualizing(false)
             hasBeenReset(false)
         }
         for(let i = 0; i < path; i++){
