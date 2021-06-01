@@ -57,6 +57,7 @@ const Mazerunner = ()=>{
             handleStartMouseDown(row,col)
             return
         }
+        
 
         //redirects if cell clicked is the end cell
         if(grid[row][col].end){
