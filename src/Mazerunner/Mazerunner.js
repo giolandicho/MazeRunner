@@ -112,11 +112,12 @@ const Mazerunner = ()=>{
         let newGrid;
         if(start){
             newGrid = toggleStart(grid, row, col)
+            setGrid(newGrid)
         }
         if(end){
             newGrid = toggleEnd(grid, row, col)
+            setGrid(newGrid)
         }
-        setGrid(newGrid)
     }
     const handleStop = (row,col) => {
         setClicked(false)
