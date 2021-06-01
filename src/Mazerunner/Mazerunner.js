@@ -57,6 +57,7 @@ const Mazerunner = ()=>{
             handleStartMouseDown(row,col)
             return
         }
+        
 
         //redirects if cell clicked is the end cell
         if(grid[row][col].end){
@@ -70,43 +71,48 @@ const Mazerunner = ()=>{
 
     //handles cell mouse enter event
     const handleMouseEnter = (row, col)=>{
-        //returns if mouse is not clicked
         if(!clicked) return
         if(start){
             handleMouseEnterForStart(row, col)
             return
         }
+        //redirect if it's the end cell
         if(end){
             handleMouseEnterForEnd(row, col)
             return
         }
-        else{
+        else{   //create wall
             const newGrid = toggleWall(grid, row, col)
             setGrid(newGrid)
         }
     }
+    //handle click event for start cell
     const handleStartMouseDown = (row,col)=>{
         setStart(true)
         setClicked(true)
         
     }
+    //handle click event for end cell
     const handleEndMouseDown = (row,col)=>{
         setEnd(true)
         setClicked(true)
         
     }
+    //handle mouse enter event if start cell is clicked
     const handleMouseEnterForStart = (row,col)=>{
         if(!start) return
         const newGrid = toggleStart(grid, row, col)
         setGrid(newGrid)
         
     }
+    //handle mouse enter event if end cell is clicked
     const handleMouseEnterForEnd = (row,col)=>{
         if(!end) return
         const newGrid = toggleEnd(grid, row, col)
         setGrid(newGrid)
         
     }
+    //handle mouse leave event if start or end cells are clicked
     const handleMouseLeave = (row,col)=>{
         if(!clicked) return
         let newGrid;
@@ -119,6 +125,8 @@ const Mazerunner = ()=>{
             setGrid(newGrid)
         }
     }
+    
+    //handle mouse up event
     const handleStop = (row,col) => {
         setClicked(false)
         setStart(false)
@@ -174,7 +182,6 @@ const Mazerunner = ()=>{
         }
     }
     const renderShortestPath = (path) =>{
-        console.log("working")
         if(path[0] !== getStart()){
             alert("no path available")
             isVisualizing(false)
