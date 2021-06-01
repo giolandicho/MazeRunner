@@ -105,7 +105,7 @@ const Mazerunner = ()=>{
         setGrid(newGrid)
         
     }
-    //handle mouse enter event if end cell is clicked
+    // handle mouse enter event if end cell is clicked
     const handleMouseEnterForEnd = (row,col)=>{
         if(!end) return
         const newGrid = toggleEnd(grid, row, col)
