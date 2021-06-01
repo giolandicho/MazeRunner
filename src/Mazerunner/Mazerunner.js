@@ -73,10 +73,12 @@ const Mazerunner = ()=>{
     const handleMouseEnter = (row, col)=>{
         //returns if mouse is not clicked
         if(!clicked) return
+        //redirect if it's the start cell
         if(start){
             handleMouseEnterForStart(row, col)
             return
         }
+        //redirect if it's the end cell
         if(end){
             handleMouseEnterForEnd(row, col)
             return
