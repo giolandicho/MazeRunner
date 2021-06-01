@@ -31,7 +31,7 @@ const closestCells = (cache)=>{
 const updateUnvisitedCells = (cell, grid)=>{
     const unvisitedNeighbors = getNeighbors(cell,grid);
 
-    for(const unvisitedCell in unvisitedNeighbors){
+    for(const unvisitedCell of unvisitedNeighbors){
         unvisitedCell.distance = cell.distance + 1
         unvisitedCell.previous = cell
     }

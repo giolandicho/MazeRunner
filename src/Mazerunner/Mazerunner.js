@@ -123,7 +123,7 @@ const Mazerunner = ()=>{
         setStart(false)
         setEnd(false)
     }
-    const getStart = (grid)=>{
+    const getStart = ()=>{
         let startCell = grid[start_row][start_col]
         grid.forEach(row =>{
            for(let i = 0; i < row.length; i++){ 
@@ -135,7 +135,7 @@ const Mazerunner = ()=>{
         })
         return startCell
     }
-    const getEnd = (grid)=>{
+    const getEnd = ()=>{
         let endCell = grid[start_row][start_col]
         grid.forEach(row =>{
            for(let i = 0; i < row.length; i++){ 
@@ -147,18 +147,18 @@ const Mazerunner = ()=>{
         })
         return endCell
     }
-    const handleBFS = (grid)=>{
+    const handleBFS = ()=>{
         const startCell = getStart(grid)
         const endCell = getEnd(grid)
         minorGridReset(grid)
         const visitedCells = breadthFirstSearch(grid, startCell, endCell)
         const path = shortestPath(endCell)
         renderBFS(visitedCells, path)
-        visualizing(true)
+        isVisualizing(true)
         hasBeenReset(false)
     }
     const renderBFS = (visitedCells, path)=>{
-        for(let i = 0; i < visitedCells; i++){
+        for(let i = 0; i <= visitedCells.length-1; i++){
             if(i === visitedCells.length-1){
                 setTimeout(()=>{
                 renderShortestPath(path)},3*i)
@@ -167,23 +167,27 @@ const Mazerunner = ()=>{
             setTimeout(()=>{
                 const cell = visitedCells[i]
                 if(!cell.start){
-                    document.getElementById(`cell-${cell.row}-${cell.col}`).classname = "visited-cell"
+                    document.getElementById(`cell-${cell.row}-${cell.col}`).className = "cell visited-cell"
                 }
             }, 3*i)
         }
     }
     const renderShortestPath = (path) =>{
+        console.log("working")
         if(path[0] !== getStart()){
             alert("no path available")
             isVisualizing(false)
             hasBeenReset(false)
         }
-        for(let i = 0; i < path; i++){
+        for(let i = 1; i < path.length-1; i++){
             setTimeout(()=>{
                 const cell = path[i]
-                document.getElementById(`cell-${cell.row}-${cell.col}`).classname = "shortest-path-cell"
-            })
+                document.getElementById(`cell-${cell.row}-${cell.col}`).className = "cell shortest-path-cell"
+            }, 50*i)
         }
+        isVisualizing(false)
+        hasBeenReset(false)
+        console.log("done rendering")
     }
 
     const toggleWall = (grid,row,col)=>{
@@ -221,27 +225,18 @@ const Mazerunner = ()=>{
     const gridReset = ()=>{
         if(visualizing)return
         isVisualizing(false)
-        let grid = []
-
-        for(let row = 0; row < 40; row++){
-            let currentRow = []
-            for(let col = 0; col < 60; col++){
-                let newCell = createCell(row,col)
-                currentRow.push(newCell)
-            }
-            grid.push(currentRow)
-        }
-
+        const grid = renderGrid()
         setGrid(grid)
         grid.forEach((row)=>{
             for(let i = 0; i < row.length; i++){
                 let cell = (row[i])
                 if(!cell.start && !cell.end && !cell.wall){
-                    document.getElementById(`cell-${cell.row}-${cell.col}`).classname = "cell"
+                    document.getElementById(`cell-${cell.row}-${cell.col}`).className = "cell"
                 }
             }
         })
-        hasBeenReset(true)     
+        hasBeenReset(true)
+        console.log("grid has been reset")     
     }
     const minorGridReset = (grid)=>{
         if(visualizing)return

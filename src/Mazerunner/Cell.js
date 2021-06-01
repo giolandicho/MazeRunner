@@ -1,13 +1,14 @@
 import React from "react";
 import "./Cell.css";
 
-const Cell = ({row, col, start, end, wall, visited, isClicked,onMouseUp, onEnter, onLeave})=>{
+const Cell = ({row, col, start, end, wall, visited, path, isClicked,onMouseUp, onEnter, onLeave})=>{
     
     const extraClassName = 
     start ? "start-cell" : 
     end ? "end-cell" :
     wall ? "wall-cell" :
-    visited ? "visited-cell" : ""
+    visited ? "visited-cell" : 
+    path ? "shortest-path-cell" : ""
     
     
 

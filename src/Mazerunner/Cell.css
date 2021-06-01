@@ -28,6 +28,6 @@
     background-color:rgb(183, 119, 226);
 }
 .shortest-path-cell{
-    background: rgb(248, 214, 22);
+    background-color: rgb(248, 214, 22) !important;
 }
 
